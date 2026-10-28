@@ -1,0 +1,25 @@
+{
+  "status": "ready_for_human_review_NOT_SUBMITTED",
+  "image": "ghcr.io/shashank-100/openenv-register-lab@sha256:4622f803b69fb85df2f1f22c8d155aa774b6236b0ce0f2f84d27c1a64b52e612",
+  "compressed_mib": 206.98,
+  "layers": 10,
+  "openenv_commit": "86a180ede21e044f7929b9a7783ad83aa67d83a3",
+  "checks": {
+    "anonymous_pull": true,
+    "openenv_validator": "6/6 PASS",
+    "unit_tests": "56 PASS",
+    "native_episode_controls": "48 PASS",
+    "exact_schema_match": true,
+    "public_ungated_dataset": true,
+    "dataset_task_definitions_match_runtime": true
+  },
+  "dataset_revision": "03de772b93f849842a1d9897b214e3c6237c3e51",
+  "anonymous_ci": "https://github.com/shashank-100/openenv-register-lab/actions/runs/40632572251",
+  "request_sha256": "e9b0c7d02d142e91ce463d51c5e6a3111e476dce0644a3bb00a5ea21068161b8",
+  "limitations": [
+    "Abstract graph-coloring tasks, not a full compiler",
+    "Only vertex labels vary within each of 12 task graphs",
+    "No policy calibration or private-task result",
+    "Admission example finishes with reward zero; independent reference episodes earn one"
+  ]
+}
