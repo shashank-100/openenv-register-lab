@@ -1,0 +1,40 @@
+name: Anonymous image qualification
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    env:
+      IMAGE: ghcr.io/shashank-100/openenv-register-lab@sha256:4622f803b69fb85df2f1f22c8d155aa774b6236b0ce0f2f84d27c1a64b52e612
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pull anonymously and start pinned amd64 image
+        run: |
+          export DOCKER_CONFIG=$(mktemp -d)
+          docker pull --platform linux/amd64 "$IMAGE"
+          docker run --name register-lab -d -p 8000:8000 "$IMAGE"
+          for i in $(seq 1 60); do
+            if curl -fsS http://localhost:8000/health; then exit 0; fi
+            sleep 2
+          done
+          docker logs register-lab
+          exit 1
+      - name: Validate original image
+        run: |
+          docker exec register-lab openenv validate --url http://localhost:8000
+          curl -fsS http://localhost:8000/schema > /tmp/live-schema.json
+          python - <<'PY'
+          import json
+          actual=json.load(open('/tmp/live-schema.json'))
+          expected=json.load(open('submission.json'))['schema']
+          assert all(actual[k]==expected[k] for k in expected)
+          print('Exact action and observation schema match: PASS')
+          PY
+      - name: Reward and native episode controls
+        run: |
+          docker cp tests register-lab:/tmp/tests
+          docker exec -u 0 register-lab pip install pytest
+          docker exec -e PYTHONPATH=/app register-lab python -m pytest /tmp/tests -q
+          docker exec -e PYTHONPATH=/app register-lab python /tmp/tests/replay.py http://localhost:8000

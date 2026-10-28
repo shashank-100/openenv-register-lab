@@ -1,0 +1,307 @@
+{
+  "submission_id": "compiler-register-lab-v1-20261028",
+  "name": "Compiler Register Lab: verified register allocation",
+  "image": "ghcr.io/shashank-100/openenv-register-lab@sha256:4622f803b69fb85df2f1f22c8d155aa774b6236b0ce0f2f84d27c1a64b52e612",
+  "schema": {
+    "action": {
+      "additionalProperties": false,
+      "properties": {
+        "metadata": {
+          "additionalProperties": true,
+          "description": "Additional metadata for the action",
+          "title": "Metadata",
+          "type": "object"
+        },
+        "operation": {
+          "default": "submit",
+          "enum": [
+            "check",
+            "submit",
+            "finish"
+          ],
+          "title": "Operation",
+          "type": "string"
+        },
+        "allocation": {
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 32,
+          "title": "Allocation",
+          "type": "array"
+        }
+      },
+      "title": "RegisterAction",
+      "type": "object"
+    },
+    "observation": {
+      "additionalProperties": false,
+      "properties": {
+        "done": {
+          "default": false,
+          "description": "Whether the episode has terminated",
+          "title": "Done",
+          "type": "boolean"
+        },
+        "reward": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Reward signal from the last action",
+          "title": "Reward"
+        },
+        "metadata": {
+          "additionalProperties": true,
+          "description": "Additional metadata for the observation",
+          "title": "Metadata",
+          "type": "object"
+        },
+        "task_id": {
+          "default": "",
+          "title": "Task Id",
+          "type": "string"
+        },
+        "instruction": {
+          "default": "",
+          "title": "Instruction",
+          "type": "string"
+        },
+        "variables": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Variables",
+          "type": "array"
+        },
+        "interference": {
+          "items": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          "title": "Interference",
+          "type": "array"
+        },
+        "feedback": {
+          "default": "",
+          "title": "Feedback",
+          "type": "string"
+        },
+        "steps_remaining": {
+          "default": 12,
+          "title": "Steps Remaining",
+          "type": "integer"
+        }
+      },
+      "title": "RegisterObservation",
+      "type": "object"
+    }
+  },
+  "tasks": [
+    {
+      "task_id": "path-8",
+      "split": "train",
+      "reset_wall_s": 120,
+      "rollout_wall_s": 300,
+      "verifier_wall_s": 120,
+      "tool_wall_s": 30,
+      "tool_calls_total": 12,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192,
+      "memory_gib": 2,
+      "cpu_floor_vcpus": 1,
+      "workspace_gib": 1
+    },
+    {
+      "task_id": "path-12",
+      "split": "train",
+      "reset_wall_s": 120,
+      "rollout_wall_s": 300,
+      "verifier_wall_s": 120,
+      "tool_wall_s": 30,
+      "tool_calls_total": 12,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192,
+      "memory_gib": 2,
+      "cpu_floor_vcpus": 1,
+      "workspace_gib": 1
+    },
+    {
+      "task_id": "cycle-8",
+      "split": "train",
+      "reset_wall_s": 120,
+      "rollout_wall_s": 300,
+      "verifier_wall_s": 120,
+      "tool_wall_s": 30,
+      "tool_calls_total": 12,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192,
+      "memory_gib": 2,
+      "cpu_floor_vcpus": 1,
+      "workspace_gib": 1
+    },
+    {
+      "task_id": "cycle-12",
+      "split": "train",
+      "reset_wall_s": 120,
+      "rollout_wall_s": 300,
+      "verifier_wall_s": 120,
+      "tool_wall_s": 30,
+      "tool_calls_total": 12,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192,
+      "memory_gib": 2,
+      "cpu_floor_vcpus": 1,
+      "workspace_gib": 1
+    },
+    {
+      "task_id": "clique-8",
+      "split": "train",
+      "reset_wall_s": 120,
+      "rollout_wall_s": 300,
+      "verifier_wall_s": 120,
+      "tool_wall_s": 30,
+      "tool_calls_total": 12,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192,
+      "memory_gib": 2,
+      "cpu_floor_vcpus": 1,
+      "workspace_gib": 1
+    },
+    {
+      "task_id": "clique-12",
+      "split": "train",
+      "reset_wall_s": 120,
+      "rollout_wall_s": 300,
+      "verifier_wall_s": 120,
+      "tool_wall_s": 30,
+      "tool_calls_total": 12,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192,
+      "memory_gib": 2,
+      "cpu_floor_vcpus": 1,
+      "workspace_gib": 1
+    },
+    {
+      "task_id": "bipartite-8",
+      "split": "train",
+      "reset_wall_s": 120,
+      "rollout_wall_s": 300,
+      "verifier_wall_s": 120,
+      "tool_wall_s": 30,
+      "tool_calls_total": 12,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192,
+      "memory_gib": 2,
+      "cpu_floor_vcpus": 1,
+      "workspace_gib": 1
+    },
+    {
+      "task_id": "bipartite-12",
+      "split": "train",
+      "reset_wall_s": 120,
+      "rollout_wall_s": 300,
+      "verifier_wall_s": 120,
+      "tool_wall_s": 30,
+      "tool_calls_total": 12,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192,
+      "memory_gib": 2,
+      "cpu_floor_vcpus": 1,
+      "workspace_gib": 1
+    },
+    {
+      "task_id": "wheel-8",
+      "split": "train",
+      "reset_wall_s": 120,
+      "rollout_wall_s": 300,
+      "verifier_wall_s": 120,
+      "tool_wall_s": 30,
+      "tool_calls_total": 12,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192,
+      "memory_gib": 2,
+      "cpu_floor_vcpus": 1,
+      "workspace_gib": 1
+    },
+    {
+      "task_id": "wheel-12",
+      "split": "train",
+      "reset_wall_s": 120,
+      "rollout_wall_s": 300,
+      "verifier_wall_s": 120,
+      "tool_wall_s": 30,
+      "tool_calls_total": 12,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192,
+      "memory_gib": 2,
+      "cpu_floor_vcpus": 1,
+      "workspace_gib": 1
+    },
+    {
+      "task_id": "crown-8",
+      "split": "train",
+      "reset_wall_s": 120,
+      "rollout_wall_s": 300,
+      "verifier_wall_s": 120,
+      "tool_wall_s": 30,
+      "tool_calls_total": 12,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192,
+      "memory_gib": 2,
+      "cpu_floor_vcpus": 1,
+      "workspace_gib": 1
+    },
+    {
+      "task_id": "crown-12",
+      "split": "train",
+      "reset_wall_s": 120,
+      "rollout_wall_s": 300,
+      "verifier_wall_s": 120,
+      "tool_wall_s": 30,
+      "tool_calls_total": 12,
+      "tool_calls_per_minute": 60,
+      "completion_tokens": 4096,
+      "context_tokens": 8192,
+      "memory_gib": 2,
+      "cpu_floor_vcpus": 1,
+      "workspace_gib": 1
+    }
+  ],
+  "example_actions": [
+    {
+      "operation": "finish",
+      "allocation": []
+    }
+  ],
+  "finish_action": {
+    "operation": "finish",
+    "allocation": []
+  },
+  "dataset": "shashank100/openenv-register-lab",
+  "source": "https://github.com/shashank-100/openenv-register-lab"
+}

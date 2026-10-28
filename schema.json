@@ -1,0 +1,108 @@
+{
+  "action": {
+    "additionalProperties": false,
+    "properties": {
+      "metadata": {
+        "additionalProperties": true,
+        "description": "Additional metadata for the action",
+        "title": "Metadata",
+        "type": "object"
+      },
+      "operation": {
+        "default": "submit",
+        "enum": [
+          "check",
+          "submit",
+          "finish"
+        ],
+        "title": "Operation",
+        "type": "string"
+      },
+      "allocation": {
+        "items": {
+          "type": "integer"
+        },
+        "maxItems": 32,
+        "title": "Allocation",
+        "type": "array"
+      }
+    },
+    "title": "RegisterAction",
+    "type": "object"
+  },
+  "observation": {
+    "additionalProperties": false,
+    "properties": {
+      "done": {
+        "default": false,
+        "description": "Whether the episode has terminated",
+        "title": "Done",
+        "type": "boolean"
+      },
+      "reward": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "integer"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Reward signal from the last action",
+        "title": "Reward"
+      },
+      "metadata": {
+        "additionalProperties": true,
+        "description": "Additional metadata for the observation",
+        "title": "Metadata",
+        "type": "object"
+      },
+      "task_id": {
+        "default": "",
+        "title": "Task Id",
+        "type": "string"
+      },
+      "instruction": {
+        "default": "",
+        "title": "Instruction",
+        "type": "string"
+      },
+      "variables": {
+        "items": {
+          "type": "string"
+        },
+        "title": "Variables",
+        "type": "array"
+      },
+      "interference": {
+        "items": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "title": "Interference",
+        "type": "array"
+      },
+      "feedback": {
+        "default": "",
+        "title": "Feedback",
+        "type": "string"
+      },
+      "steps_remaining": {
+        "default": 12,
+        "title": "Steps Remaining",
+        "type": "integer"
+      }
+    },
+    "title": "RegisterObservation",
+    "type": "object"
+  }
+}
